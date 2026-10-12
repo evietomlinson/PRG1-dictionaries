@@ -12,21 +12,23 @@ class_list = ["Elara", "Kwame", "Siobhan", "Kai", "Aisha"]
 
 def class_average(grades, names):
     """Return the average grade of the students in names."""
-    total = 0
-    for name in names:
+    total = 0 
+
+    for name in grades:
         total = total + grades.get(name, 0)
-    return total / len(names)
+    return total / len(student_grades)
 
 
 def is_registered(grades, name):
     """Return True if name has a grade recorded, False if not."""
-    return name in grades.values()
+    return name in grades.keys()
 
 
 def record_grade(grades, name, score):
     """Record a score for a student who does not already have one.
     Leave an existing grade alone."""
-    grades[name] = score
+    if name not in grades: 
+        grades[name] = score
 
 
 print(f"Class average: {class_average(student_grades, class_list):.1f}")
